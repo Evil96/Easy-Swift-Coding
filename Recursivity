@@ -1,0 +1,20 @@
+//Author: Edgar Vilchis
+//Recursivity code
+//Last update: October 29th
+//Needs important update
+
+import UIKit
+
+var str = 500
+let a = str
+
+if str == a{
+    print("Recursivity!")
+}
+
+for i in 0...a{
+    if str > 110 || i > str{
+        print("Again!")
+    }
+    
+}
