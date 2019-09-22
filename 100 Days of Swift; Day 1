@@ -1,0 +1,34 @@
+import UIKit
+//Day 1
+//Variable creation
+var str = "Hello, playground"
+var myVar = "Hello, Again!"
+myVar = "Goodbye!"
+//Strings and Integers
+var number = 38
+var otherNumber = 8_000_000
+//Multi-line Strings
+var strTwo = """
+This
+Is
+A Message
+"""
+var strThree = """
+This is \
+Another \
+Message
+"""
+//Doubles and Booleans
+var pi = 3.14159265
+var boolean = true
+//String Interpolation
+var myName = "Edgar"
+var anotherVar = "My name is \(myName)"
+//Constants
+let thisWontEverChange = "I'm a constant"
+print(thisWontEverChange)
+//Type annotations (Type inference)
+let againMyName: String = "Edgar"
+let hereAnInteger: Int = 23
+let place: String = "Mexico City"
+print("Hi! My name is \(againMyName), I'm \(hereAnInteger) years old, and I live in \(place)")
