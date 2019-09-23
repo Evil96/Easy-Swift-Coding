@@ -1,0 +1,86 @@
+//Edgar V
+//100 Days of Swift Day 2
+//September 22th, 2019
+
+import UIKit
+
+//Arrays
+let john = "John Lennon"
+let paul = "Paul McCartney"
+let george = "George Harrison"
+let ringo = "Ringo Starr"
+
+let beatles = [john, paul, george, ringo]
+print("The beatles are conformed by \(beatles)")
+
+//Sets
+let colors = Set(["red", "green", "blue"])
+let colors2 = Set(["red", "red", "Blue", "red"]) //Repeated values are ignored
+
+//Tuples
+var name = (first: "Name", last: "another", second: "last", third: "one")
+name.0 //You can change the value inside of the tuple but not its type of value
+name.1
+name.first
+name.third
+
+//Arrays vs Sets vs Tuples
+//Specific, fixed collection of related values where each item has a precise position or name -> Tuple
+//Collection of values that most be unique or you need to be able to check whether a specific item -> Sets
+//Just a collection of values that can contain duplicates -> Array
+
+//Dictionaries
+let ages = [
+    "My friend": 25,
+    "My other friend": 28
+]
+
+let user = [23.0:21] //Using type annotation
+//Please notice the use of [Double:Int]
+user[23.0]
+ages["My friend"]
+
+//Dictionary Default Value
+let favoriteVG = [
+    "Edgar":"Gears of War",
+    "Erik":"Apex"
+]
+favoriteVG["Nacho"]//We dont have a value for Nacho, so right on this line is nil
+favoriteVG["Nacho", default:"Unknown"]
+
+//Empty locations
+var teams = [String:Double]() //An empty dictionary
+teams["Edgar"] = 4.5 //Adding a value to the teams dictionary
+var results = [Int]() //An empty array
+var words = Set<String>() //An empty Set for String values
+var numbers = Set<Int>() //Another empty Set but for Int values
+var scores = Dictionary<String, Int>() //Another way to declare an empty dictionary
+var resultsTwo = Array<Int>() //Another way to declar an empty array
+
+//Enumerations
+enum Result { //Used to prevent of using different strings each time
+    case success
+    case failure
+}
+
+let result = Result.failure
+
+//Enum associated values
+enum Activity {
+    case bored
+    case running(destination: String)
+    case talking(topic: String)
+    case singing(volume: Int)
+}
+
+let talking = Activity.talking(topic: "football")
+
+//Enum raw values
+enum Planet: Int {
+    case mercury = 1
+    case venus
+    case earth
+    case mars
+}
+
+let earth = Planet(rawValue: 3)
