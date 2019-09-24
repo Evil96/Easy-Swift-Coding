@@ -1,0 +1,132 @@
+//Edgar V
+//100 days of swift; Day 3
+//September 23, 2019
+
+import UIKit
+//Arithmetic operators
+let firstScore = 12
+let secondScore = 4
+
+let total = firstScore + secondScore //sum
+let difference = firstScore - secondScore //difference
+
+let product = firstScore * secondScore //mult
+let divided = firstScore / secondScore //division
+
+let remainder = 13 % secondScore //mod
+
+//Operator Overloading
+//What an operator does depends on the values you use it with
+let halfName = ["Ed"]
+let otherHalf = ["gar"]
+let sumName = halfName + otherHalf
+//Swift won't let you mix types
+
+//Compund asigment operators
+var score = 45
+score += 15
+
+var ad = "I've got a peanut in my"
+ad += " butter"
+
+//Comparison operators
+let firsttScore = 6
+let seconddScore = 4
+
+firsttScore == seconddScore //equals
+firsttScore != seconddScore //is not equal
+
+firstScore < secondScore //minus
+firstScore >= secondScore //greater or equal
+
+"Edgar" <= "Holland" //Comparison operators also work with strings
+
+//Conditions
+let firstCard = 11
+let secondCard = 10
+
+//first example condition
+if firstCard + secondCard == 21 {
+    print("Blackjack!")
+}
+
+//Second
+if firstCard + secondCard == 21 {
+    print("Blackjack!")
+} else {
+    print("Regular cards")
+}
+
+//third
+if firstCard + secondCard == 2 {
+    print("Aces!")
+} else if firstCard + secondCard == 21 {
+    print("Blackjack!")
+} else {
+    print("Regular cards")
+}
+
+//Combining conditions
+let age1 = 12
+let age2 = 21
+
+if age1 > 18 && age2 > 18 {
+    print("Both are over 18")
+} //As one of both conditions wasn't true, it doesn't print
+
+//So we can use OR to print even if one of the conditions weren't true
+if age1 > 18 || age2 > 18 {
+    print("One of them is over 18")
+}
+
+//The ternary operator
+let card = 11
+let cardTwo = 10        //if it's true           If it's false
+print(card == cardTwo ? "Cards are the same" : "Cards are different")
+
+//Which is the same as:
+
+if card == cardTwo {
+    print("Cards are the same")
+} else {
+    print("Cards are different")
+}
+
+//Switch statements
+let weather = "sunny"
+
+switch weather { //Switch case for weather
+case "rain":
+    print("Bring an umbrella")
+case "snow":
+    print("Wrap up warm")
+case "sunny":
+    print("Wear sunscreen")
+default:
+    print("Enjoy your day!")
+}
+
+switch weather {
+case "rain":
+    print("Bring an umbrella")
+case "snow":
+    print("Wrap up warm")
+case "sunny":
+    print("Wear sunscreen")
+    fallthrough //wanting execution to continue
+default:
+    print("Enjoy your day!")
+}
+
+let newScore = 90
+
+switch newScore {
+case 0..<50: //from 0 to 49
+    print("You failed badly.")
+case 50..<85: //from 50 to 84
+    print("You did OK.")
+case 85...90: //from 85 to 90
+    print("Almost great...")
+default:
+    print("You did great!")
+}
