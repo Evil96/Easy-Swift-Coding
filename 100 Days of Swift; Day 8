@@ -1,0 +1,99 @@
+//Edgar V
+//100 Days of Swift; Day 8
+//September 30th, 2019
+
+import UIKit
+
+//Creating your own struct
+struct classmates {
+    var name: String
+}
+
+var first = classmates(name: "Guillermo")
+var second = classmates(name: "Nacho")
+print(first.name)
+print(second.name)
+
+first.name = "Erik"
+
+//Computed properties
+struct names {
+    var firstName: String
+    var isThatYourName: Bool
+    
+    var yourName: String{
+        if isThatYourName {
+            return ("\(firstName) is my name!")
+        } else{
+            return("\(firstName) isn't my name!")
+        }
+    }
+}
+
+let theName = names(firstName: "Edgar", isThatYourName: true)
+print(theName.yourName)
+
+//Property observers
+struct Progress { //What we want to happen is for Swift to print a message every time amount changes
+    var task: String
+    var amount: Int {
+        didSet { //we can use a didSet property observer for that. This will run some code every time amount changes
+            print("\(task) is now \(amount)% complete")
+        }
+    }
+}
+
+var progress = Progress(task: "Loading data", amount: 0)
+progress.amount = 30
+progress.amount = 80
+progress.amount = 100
+
+//Methods
+//On structs, a methed is a function inside of a struct
+struct City {
+    var population: Int
+
+    func collectTaxes() -> Int {
+        return population * 1000
+    }
+}
+
+let london = City(population: 9_000_000)
+london.collectTaxes()
+
+//Mutating methods
+//When you want to change a property inside a method, you need to mark it using the mutating keyword
+struct Person {
+    var name: String
+
+    mutating func makeAnonymous() {
+        name = "Anonymous"
+    }
+}
+
+//Because it changes the property,
+//Swift will only allow that method to be called on Person instances that are variables
+var person = Person(name: "Ed")
+person.makeAnonymous()
+
+//Properties and methods of strings
+let string = "Do or do not, there is no try."
+print(string.count)
+print(string.hasPrefix("Do"))
+print(string.uppercased())
+print(string.sorted())
+//There are lots more of string. properties and methods
+
+//Properies and methods of arrays
+//We can create an array
+var toys = ["Woody"]
+//Print the count of the array
+print(toys.count)
+//Add more values to the array
+toys.append("Buzz")
+//Search if it is true or false an index of the array
+toys.firstIndex(of: "Buzz")
+//Sort the array
+print(toys.sorted())
+//Remove an element of the array
+toys.remove(at: 0)
