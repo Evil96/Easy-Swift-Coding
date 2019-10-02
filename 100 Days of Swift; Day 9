@@ -1,0 +1,96 @@
+//Edgar V
+//100 Days of Swift; Day 9
+//October 1st, 2019
+
+import UIKit
+
+//Initializers
+//struct User {
+//    var username: String
+//}
+
+//var user = User(username: "twostraws")
+
+struct User {
+    var username: String
+
+    init() {
+        username = "Anonymous"
+        print("Creating a new user!")
+    }
+}
+
+var user = User()
+user.username = "twostraws"
+
+//Referring to the current instance
+//Using self, which points to whatever instance of the struct is currently being used.
+//This self value is particularly useful when you
+//create initializers that have the same parameter names as your property.
+struct Person {
+    var name: String
+
+    init(name: String) {
+        print("\(name) was born!")
+        self.name = name //We use self
+    }
+}
+
+//Lazy properties
+//We use them if a propertie may be or may be not has to be used
+
+struct FamilyTree {
+    init() {
+        print("Creating family tree!")
+    }
+}
+
+struct People {
+    var name: String
+    //var familyTree = FamilyTree()
+    lazy var familyTree = FamilyTree() //declared inside the struct People
+    //You need to access the property at least once
+
+    init(name: String) {
+        self.name = name
+    }
+}
+
+var ed = People(name: "Ed")
+
+//Giving access to the property:
+ed.familyTree
+
+//Static properties and methods
+struct Student {
+    static var classSize = 0 //Adding static to the variable
+    //We use this becuase we need more than just one instance of it
+    var name: String
+
+    init(name: String) {
+        self.name = name
+        Student.classSize += 1 //Now we can have more than 0 students
+    }
+}
+
+let eddie = Student(name: "Eddie")
+let taylor = Student(name: "Taylor")
+print(Student.classSize)
+
+//Access control
+//With this we can control which methods can or CANNOT acces to an instance of a variable
+//That's why we will use private
+struct PersonTwo {
+    //var id: String
+    private var id: String //This instance will be private
+    //Which means that it won't be possible to access to it outside of the struct
+
+    init(id: String) {
+        self.id = id
+    }
+
+    func identify() -> String { //To access, we declare it this way as a func INSIDE the struct
+        return "My social security number is \(id)"
+    }
+}
+//Another common option is public, which lets all other code use the property or method.
