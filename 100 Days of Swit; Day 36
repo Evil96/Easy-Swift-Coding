@@ -1,0 +1,174 @@
+//
+//  ContentView.swift
+//  iExpense
+//
+//  Created by Edgar Vilchis on 01/12/19.
+//  Copyright © 2019 Edgar Vilchis. All rights reserved.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    
+    
+    var body: some View {
+        Text("d")
+    }
+}
+
+struct User: Codable {
+    var firstName: String
+    var lastName: String
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+//Sharing swiftUI state with @Observedobject
+/*
+ 
+ //States work with structs but for classes is different
+ //@State private var user = User()
+ @ObservedObject var user = User()
+ 
+ VStack {
+     Text("Your name is \(user.firstName) \(user.lastName).")
+
+     TextField("First name", text: $user.firstName)
+     TextField("Last name", text: $user.lastName)
+ }
+ 
+ //If we had struct instead of class, the view would be changing automatically
+ //With Class that doesn't apply
+ //what’s happening is that the values inside our class are being
+ //changed but the view isn’t being reloaded to reflect that change.
+ 
+ class User: ObservableObject { //Pointing difference between "struct" and "class"
+     //Classes don't need the mutating keyword
+     @Published var firstName = ""
+     @Published var lastName = ""
+     
+     /*
+      @Published is more or less half of @State:
+      it tells Swift that whenever either of those two properties changes,
+      it should send an announcement out to any SwiftUI views that are
+      watching that they should reload.
+      */
+ }
+ 
+ */
+
+//*********************************************************************************
+
+//Showing and hiding views
+
+/*
+ @State private var showingSheet = false
+ 
+ Button("Show Sheet") {
+     self.showingSheet.toggle()
+ }.sheet(isPresented: $showingSheet) {
+     SecondView(name: "Edgar")
+ }
+ 
+ struct SecondView: View {
+     @Environment(\.presentationMode) var presentationMode
+     //creates a property called presentationMode attached
+     //to the presentation mode variable stored in the app’s environment
+     
+     var name: String
+     
+     var body: some View {
+         //Text("Hello, \(name)!")
+         Button("Dismiss") {
+             self.presentationMode.wrappedValue.dismiss()
+             /*
+              The addition of wrappedValue in there is required,
+              because presentationMode is actually a binding so
+              it can be updated automatically by the system – we
+              need to dig inside it to retrieve the actual presentation
+              mode for us to dismiss the view.
+              */
+         }
+     }
+ }
+ */
+
+//**********************************************************************************
+
+//onDelete
+
+/*
+ @State private var numbers = [Int]()
+ @State private var currentNumber = 1
+ 
+ NavigationView{
+ VStack {
+     List {
+         ForEach(numbers, id: \.self) {
+             Text("\($0)")
+         }.onDelete(perform: removeRows)
+         //onDelete just works with ForEach statements
+         //List always will add rows but will not work with onDelete
+     }
+
+     Button("Add Number") {
+         self.numbers.append(self.currentNumber)
+         self.currentNumber += 1
+     }
+     }.navigationBarItems(leading: EditButton())
+ }
+ 
+ func removeRows(at offsets: IndexSet) {
+     numbers.remove(atOffsets: offsets)
+ }
+ 
+ */
+
+//**********************************************************************************
+
+//Storing user settings with UserDefaults
+
+/*
+ @State private var tapCount = UserDefaults.standard.integer(forKey: "Tap")
+ 
+ Button("Tap count: \(tapCount)") {
+     self.tapCount += 1
+     UserDefaults.standard.set(self.tapCount, forKey: "Tap")
+ }
+ 
+ */
+
+//**********************************************************************************
+
+//Archiving Swift objects with Codable
+
+/*
+ @State private var user = User(firstName: "Taylor", lastName: "Swift")
+ 
+ Button("Save User") {
+     let encoder = JSONEncoder()
+
+     if let data = try? encoder.encode(self.user) {
+         UserDefaults.standard.set(data, forKey: "UserData")
+     }
+ }
+ /*
+  That data constant is a new data type called,
+  perhaps confusingly, Data. It’s designed to store
+  any kind of data you can think of, such as strings,
+  images, zip files, and more. Here, though, all we care
+  about is that it’s one of the types of data we can write
+  straight into UserDefaults.
+
+  When we’re coming back the other way – when we have JSON
+  data and we want to convert it to Swift Codable types – we
+  should use JSONDecoder rather than JSONEncoder(), but the
+  process is much the same.
+  */
+ 
+ */
